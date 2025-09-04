@@ -1,9 +1,9 @@
-☕ The Brown Butter Café
+☕ The Brown Butter Café <br/>
 A full-stack web app for an online café where users can place orders, and admins can manage them in real-time. Built with React, Express, Firebase, and TailwindCSS.
 
-🌐 Live Demo: <a href="https://the-brown-butter-cafe.vercel.app/">The Brown Butter Cafe</a
+🌐 Live Demo: <a href="https://the-brown-butter-cafe.vercel.app/">The Brown Butter Cafe</a>
 
-✨ Features
+✨ Features<br/>
 🍽️ User Side
 
 Browse the café menu
