@@ -25,12 +25,15 @@ export default function CartSidebar({ isOpen, onClose }) {
   const handleOrderPlaced = async (details) => {
     setIsPlacingOrder(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/orders", {
-        items: cart,
-        createdAt: new Date(),
-        name: details.name,
-        phone: details.phone,
-      });
+      const res = await axios.post(
+        "https://the-brown-butter-cafe.onrender.com/api/orders",
+        {
+          items: cart,
+          createdAt: new Date(),
+          name: details.name,
+          phone: details.phone,
+        }
+      );
       console.log("Order placed successfully: ", res.data);
       toast.success("Order placed successfully!");
       emptyCart();

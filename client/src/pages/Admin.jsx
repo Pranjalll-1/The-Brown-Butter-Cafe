@@ -36,9 +36,12 @@ export default function Admin() {
 
     try {
       const token = await user.getIdToken();
-      const res = await axios.get("http://localhost:5000/api/admin/orders", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        "https://the-brown-butter-cafe.onrender.com/api/admin/orders",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       setOrders(res.data);
       setNotAuthorized(false); // admin verified
@@ -66,7 +69,7 @@ export default function Admin() {
     try {
       const token = await user.getIdToken();
       await axios.post(
-        `http://localhost:5000/api/admin/orders/${orderId}/complete`,
+        `https://the-brown-butter-cafe.onrender.com/api/admin/orders/${orderId}/complete`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
