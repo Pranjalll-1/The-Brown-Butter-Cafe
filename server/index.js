@@ -8,7 +8,6 @@ import {
   query,
   where,
   doc,
-  updateDoc,
   deleteDoc,
 } from "firebase/firestore";
 
@@ -17,10 +16,31 @@ import { checkAdmin } from "./middleware/auth.js";
 
 dotenv.config();
 const app = express();
-app.use(cors());
+
+// ✅ Allowed origins (dev + prod)
+const allowedOrigins = [
+  "http://localhost:3000", // React dev server
+  process.env.FRONTEND_URL || "https://the-brown-butter-cafe.vercel.app", // Vercel frontend
+];
+
+// ✅ Configure CORS
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
-// Place order: store in Firestore with status 'pending'
+// Place order
 app.post("/api/orders", async (req, res) => {
   try {
     const orderData = {
@@ -35,7 +55,7 @@ app.post("/api/orders", async (req, res) => {
   }
 });
 
-// Get all pending orders for admin
+// Get all pending orders (admin)
 app.get("/api/admin/orders", checkAdmin, async (req, res) => {
   try {
     const q = query(collection(db, "orders"), where("status", "==", "pending"));
@@ -48,7 +68,7 @@ app.get("/api/admin/orders", checkAdmin, async (req, res) => {
   }
 });
 
-// Mark order as completed and remove from DB
+// Mark order complete
 app.post("/api/admin/orders/:id/complete", async (req, res) => {
   try {
     const orderId = req.params.id;
