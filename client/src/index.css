@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+:root {
+  --background: hsl(15 35% 18%);
+  --foreground: #f5ecd7;
+  --primary: hsl(35 62% 89%);
+  --secondary: hsl(25 35% 43%);
+  --cafe-warm-accent: hsl(35 62% 89%);
+  --cafe-dark: hsl(15 35% 18%);
+  --muted: hsl(25 25% 35%);
+  --border: hsl(25 25% 35%);
+  --accent: hsl(30 45% 50%);
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  position: relative;
+}
+
+.category-btn{
+  border: 2px solid var(--cafe-warm-accent);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+}
+
+.add-to-cart-btn{
+  cursor: pointer;
+  border: 2px solid var(--cafe-warm-accent);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  color: var(--cafe-dark);
+  background-color: hsl(35, 61%, 89%);
+
+}
+
+.cta-btn{ 
+ cursor: pointer;
+  border: 2px solid var(--cafe-warm-accent);
+  border-radius: 12px;
+  color: var(--cafe-dark);
+  background-color: hsl(35, 61%, 89%);
+}
+
+.add-to-cart-btn:hover, .cta-btn:hover{
+  background-color: var(--cafe-dark);
+  color: var(--foreground);
+}
+
+.cart-sidebar-close:hover{
+  background-color: var(--cafe-dark);
+  color: var(--foreground);
+}
+
+
+.add-to-cart{
+  justify-self: flex-end;
+}
+
+.quantity-btn{
+  cursor: pointer;
+  border: 2px solid var(--cafe-warm-accent);
+  padding: 0.5rem 0.75rem;
+  color: var(--cafe-dark);
+  background-color: hsl(35, 61%, 89%);
+}
+
+.quantity-btn:hover{
+  background-color: var(--cafe-dark);
+  color: var(--foreground);
+}
+
+.active-category-btn{
+  color: var(--cafe-dark);
+  background-color: hsl(35, 61%, 89%);
+}
+
+.category-btn:hover{
+  color: var(--cafe-dark);
+  background-color: hsl(35, 61%, 89%);
+}
+
+.hero-head{
+  font-family: var(--font-heading);
+}
+
+/* Coffee bean background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(ellipse 20px 12px at 50px 50px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 150px 120px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 250px 80px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 350px 150px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 450px 100px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 550px 180px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 650px 70px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 750px 130px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 850px 90px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 20px 12px at 950px 160px, var(--cafe-warm-accent) 0%, transparent 50%);
+  background-size: 200px 200px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Additional coffee bean clusters for variety */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(ellipse 15px 9px at 100px 200px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 15px 9px at 300px 250px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 15px 9px at 500px 300px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 15px 9px at 700px 350px, var(--cafe-warm-accent) 0%, transparent 50%),
+    radial-gradient(ellipse 15px 9px at 900px 400px, var(--cafe-warm-accent) 0%, transparent 50%);
+  background-size: 400px 400px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--cafe-warm-accent);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.menu-head-container{
+  background-color: rgb(95, 67, 53, 0.7);
+}
+
+.menu-card{
+  background-color: rgb(110, 78, 63);
+  border-radius: 12px;
+}
+.menu-card:hover{
+  background-color: rgb(95, 67, 53);
+  transform: scale(1.02);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cart-side-container{
+  background-color: rgb(98, 69, 55);
+}
